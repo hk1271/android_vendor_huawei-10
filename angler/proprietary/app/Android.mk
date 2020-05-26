@@ -37,8 +37,17 @@ LOCAL_DEX_PREOPT := false
 LOCAL_MODULE_SUFFIX := $(COMMON_ANDROID_PACKAGE_SUFFIX)
 include $(BUILD_PREBUILT)
 
-
-endif
+include $(CLEAR_VARS)
+LOCAL_MODULE := ims
+LOCAL_MODULE_OWNER := lge
+LOCAL_SRC_FILES := proprietary/vendor/app/ims/ims.apk
+LOCAL_CERTIFICATE := platform
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_CLASS := APPS
+LOCAL_DEX_PREOPT := false
+LOCAL_MODULE_SUFFIX := .apk
+LOCAL_VENDOR_MODULE := true
+include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
 LOCAL_MODULE := symlinks
@@ -49,3 +58,7 @@ LOCAL_POST_INSTALL_CMD := \
         ln -sf /vendor/lib64/libimsmedia_jni.so $(PRODUCT_OUT)/vendor/app/ims/lib/arm64/libimsmedia_jni.so; \
 
 include $(BUILD_PHONY_PACKAGE)
+
+endif
+
+
